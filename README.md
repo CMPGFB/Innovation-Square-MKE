@@ -66,3 +66,20 @@ Innovation Square MKE is designed as a pre-accelerator that not only incubates e
 Sustainable Growth:
 
 With an annual renewal mechanism, profit-sharing for lease NFT holders, and a separate governance system, Innovation Square is structured for long-term viability, community engagement, and continuous innovation.
+
+This repository contains the complete smart contract system for **Innovation Square MKE**, written in Solidity and Clarity.
+
+## Contracts
+
+### Solidity
+- **LeaseNFT.sol** — NFT-based lease management with renewal and reclaim logic
+- **GovernanceToken.sol** — Voting system for active Lease NFT holders
+
+### Clarity
+- **lease-nft.clar** and **gov-token.clar** — Matching logic for Stacks network
+
+## Usage
+Renew NFTs annually. Proposal voting is tied to active NFT holders.
+
+## License 
+MIT 
