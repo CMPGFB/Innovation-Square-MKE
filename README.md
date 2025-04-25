@@ -69,14 +69,55 @@ With an annual renewal mechanism, profit-sharing for lease NFT holders, and a se
 
 This repository contains the complete smart contract system for **Innovation Square MKE**, written in Solidity and Clarity.
 
-## Contracts
+- **LeaseNFT Contract**: A tokenized lease management system
+- **GovernanceToken Contract**: A non-equity governance token with a proposal and voting system
 
-### Solidity
-- **LeaseNFT.sol** — NFT-based lease management with renewal and reclaim logic
-- **GovernanceToken.sol** — Voting system for active Lease NFT holders
+## 📦 Contracts Overview
 
-### Clarity
-- **lease-nft.clar** and **gov-token.clar** — Matching logic for Stacks network
+### 🔐 LeaseNFT.sol
+- Implements a tokenized lease model using NFTs
+- Lease holders must renew their NFT once per year
+- Failure to renew allows the contract owner to reclaim and resell the lease
+- Includes a basic profit-sharing mechanism for lease NFT holders
+
+### 📊 GovernanceToken.sol
+- A fungible ERC-20 style governance token (`ISGT`)
+- Only the designated `director` can mint tokens or create proposals
+- Only active Lease NFT holders can vote
+- Proposal creation and voting include checks for time limits and double voting prevention
+
+### 🔐 lease-nft.clar
+- Clarity version of the Lease NFT contract
+- Tracks lease ownership, renewal deadlines, and reclaim logic
+
+### 📊 gov-token.clar
+- Clarity version of the Governance Token contract
+- Connects with `lease-nft.clar` to ensure only active lease holders can vote
+- `director` is authorized to mint, create, and execute proposals
+
+---
+
+## 🚀 Deployment Instructions
+
+### Solidity (Base or Ethereum)
+1. Compile using Remix or Hardhat
+2. Deploy `LeaseNFT.sol` and record the contract address
+3. Deploy `GovernanceToken.sol` using the LeaseNFT contract address as a constructor argument
+
+### Clarity (Stacks)
+1. Deploy `lease-nft.clar` via Clarinet or directly on the Stacks Explorer
+2. Deploy `gov-token.clar`, ensuring it imports or interfaces with the lease record map from `lease-nft.clar`
+
+---
+
+## 🔁 System Roles
+
+| Role         | Permission                             |
+|--------------|-----------------------------------------|
+| `director`   | Mint tokens, create & execute proposals |
+| Lease NFT holders | Receive revenue, renew leases        |
+| Active NFT holders | Vote in governance proposals        |
+
 
 ## Usage
 Renew NFTs annually. Proposal voting is tied to active NFT holders.
